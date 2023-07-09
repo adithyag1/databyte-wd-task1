@@ -32,7 +32,12 @@ document.addEventListener("DOMContentLoaded",function(){
         if(!orders.includes(ran)) orders.push(ran);
     }
 
-    let leaderboard=JSON.parse(localStorage.getItem("leaderboard"))||{};
+    try{
+        let leaderboard=JSON.parse(localStorage.getItem("leaderboard"));
+    }
+    catch{
+        let leaderboard={};
+    }
     
     Object.keys(leaderboard)
     .sort((a,b)=>leaderboard[b]-leaderboard[a])
