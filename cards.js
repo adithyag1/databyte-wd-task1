@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded",function(){
     let clickok=true;
     let playername="";
     let sorted={}
+    localStorage.clear();
 
     nameform.addEventListener("submit",function(event){
         event.preventDefault();
@@ -31,13 +32,8 @@ document.addEventListener("DOMContentLoaded",function(){
         let ran=Math.floor(Math.random()*16+1);
         if(!orders.includes(ran)) orders.push(ran);
     }
-
-    try{
-        let leaderboard=JSON.parse(localStorage.getItem("leaderboard"));
-    }
-    catch{
-        let leaderboard={};
-    }
+    
+    let leaderboard=JSON.parse(localStorage.getItem("leaderboard"));
     
     Object.keys(leaderboard)
     .sort((a,b)=>leaderboard[b]-leaderboard[a])
